@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "DiasDaSemana";
+}
+
+<!--Formulário para usuário interagir-->
+<!--Método POST em execução após clicar no botão-->
+<form class="form-semana" method="post" action="/Home/DiasSemana">
+    <label class="label-semana" for="userInput">Digite um número de 1 a 7:</label>
+    <input class="input-semana" type="number" name="userInput" id="userInput" min="1" max="7" required />
+    <button class="button-semana" type="submit">Enviar</button>
+</form>
+
+<!--Printar dia da semana por extenso na View-->
+<h2 class="text-semana">Dia da Semana: @ViewData["DiaSemana"]</h2>
