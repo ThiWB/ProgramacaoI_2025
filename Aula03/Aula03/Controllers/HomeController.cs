@@ -16,7 +16,7 @@ namespace Aula03.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View("./JogoVelha/JogoVelha");
         }
 
         [HttpGet]
@@ -117,7 +117,7 @@ namespace Aula03.Controllers
         }
 
         [HttpGet]
-        public string GetFor()
+        public string GetFor(int x)
         {
             /*
              
@@ -140,13 +140,59 @@ namespace Aula03.Controllers
 
             string retorno = string.Empty;
 
-            for(int i=0; i<10; i++)
+            for(int i=1; i<=x; i++)
             {
+                //E se eu quisesse interromper o laço caso ele fosse maior que 5
+                if(i > 50)
+                {
+                    break; //Interrompe o laço
+                }
+
+                //Caso eu deseje que o laço siga em frente
+                //Forçando-o a continuar a execução
+                if((i%2) != 0)
+                {
+                    continue;
+                }
+
                 retorno += $"{i}; ";
             }
 
             return retorno;
         }
+
+        [HttpGet]
+        public string GetForEach(string color)
+        {
+            /*
+               O comando Foreach() (para cada)
+               é utilizado para iterar por uma
+               sequência de itens em uma coleção,
+               e servir como uma opção simples de repetição.
+            */
+
+            string[] colors = ["Vermelho", "Preto", "Azul", "Amarelo", "Verde", "Branco", "Azul-Marinho", "Rosa", "Roxo", "Cinza"];
+
+            string retorno = string.Empty;
+
+            if (colors.Contains(char.ToUpper(color[0]) + color.Substring(1)))
+            {
+                retorno = "A cor escolhida é válida";
+            }
+
+            else
+            {
+                retorno = "Cor escolhida Inválida";
+            }
+
+            foreach(string s in colors)
+            {
+                retorno += $" [{s}]";
+            }
+
+            return retorno;
+        }
+
 
         public IActionResult Privacy()
         {
