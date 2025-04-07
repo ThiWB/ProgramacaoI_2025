@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Aulau03.Controllers
+namespace Aula03.Controllers
 {
     public class JogoVelhaController : Controller
     {
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View("../JogoVelha/Index");
         }
 
         [HttpPost]
@@ -19,8 +19,8 @@ namespace Aulau03.Controllers
         {
             string[,] matrixJV = new string[3, 3];
             matrixJV[0, 0] = A00;
-            matrixJV[1, 0] = A01;
-            matrixJV[2, 0] = A02;
+            matrixJV[0, 1] = A01;
+            matrixJV[0, 2] = A02;
 
             matrixJV[1, 0] = A10;
             matrixJV[1, 1] = A11;
@@ -30,17 +30,17 @@ namespace Aulau03.Controllers
             matrixJV[2, 1] = A21;
             matrixJV[2, 2] = A22;
 
-            string winner = CheckWinner(matrixJV);
-            if (!string.IsNullOrEmpty(winner))
+            string vencedor = CheckWinner(matrixJV);
+            if (!string.IsNullOrEmpty(vencedor))
             {
-                ViewData["Winner"] = $"Jogador {winner} venceu!";
+                ViewData["Vencedor"] = $"Parabéns! Jogador {vencedor} venceu!";
             }
 
             return View();
         }
 
         [HttpGet]
-        private string CheckWinner(string[,] matrix)
+        public string CheckWinner(string[,] matrix)
         {
             for (int i = 0; i < 3; i++)
             {

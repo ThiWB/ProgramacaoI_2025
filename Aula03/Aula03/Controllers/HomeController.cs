@@ -16,8 +16,9 @@ namespace Aula03.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View("./JogoVelha/JogoVelha");
+            return View("../JogoVelha/Index");
         }
+
 
         [HttpGet]
         public string GetIf(int x)
