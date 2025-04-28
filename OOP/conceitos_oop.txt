@@ -1,0 +1,45 @@
+----------------------------------------------------------------------
+     		Thiago Wurster Balbinot - 28/04/2025
+	   DESENVOLVIMENTO DE SISTEMAS ORIENTADOS A OBJETOS
+----------------------------------------------------------------------
+
+* API (Access Program Interface) = Tipo de sistema distribuído para realizar a comunicação entre diferentes sistemas/servidores;
+
+* Padrões de Design;
+
+* Modelo de Domínio;
+
+* Aplicações Dot Net.
+
+----------------------------------------------------------------------
+
+CLASSE X OBJETO:
+
+* Classe diz respeito ao que é codificado e definido, tendo a palavra-chave "class", permanece mesmo após encerrar o programa;
+
+* Objeto é uma instância de uma classe, ficando na memória do computador, o qual ao encerrar o programa, é eliminado da memória.
+
+Objeto:
+var customer1 = new Customer();
+customer1.customerName = "Thiago";
+customer1.age = 19;
+
+Classe:
+public class Customer
+{
+   public string customerName {get; set;}
+   public int age {get; set;}
+}
+
+----------------------------------------------------------------------
+
+Objeto de Negócio:
+* Utilizado para solucionar problemas passageiros ou situações que surgem após um tempo.
+
+Entidade:
+* Qualquer coisa importante do domínio da aplicação ou do mundo real, que possa ser representado como uma Classe;
+* O Banco de Dados sustenta o sistema/aplicação.
+* Ex.: Entity --> Class --> Object
+
+
+
