@@ -41,5 +41,11 @@ Entidade:
 * O Banco de Dados sustenta o sistema/aplicação.
 * Ex.: Entity --> Class --> Object
 
+----------------------------------------------------------------------
 
+Procedimento:
+* Identificar Classes;
+* Separar Responsabilidades;
+* Estabelecer Relacionamentos;
+* Reuso.
 
