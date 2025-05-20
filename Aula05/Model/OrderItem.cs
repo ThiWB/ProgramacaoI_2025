@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class OrderItem
+    public class OrderItem
     {
         public int Id { get; set; }
         public Product ? Product { get; set; }
@@ -15,17 +15,14 @@ namespace Model
 
         public bool Validate()
         {
-            return true;
-        }
+            bool isValid = true;
 
-        public OrderItem Retrieve()
-        {
-            return new OrderItem();
-        }
-
-        public void Save(OrderItem orderItem)
-        {
-
+            isValid =
+                (Product != null) &&
+                (Id > 0) &&
+                (Quantity > 0) &&
+                (PurchasePrice > 0);
+            return isValid;
         }
     }
 }

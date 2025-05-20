@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Order
+    public class Order
     {
         public int Id { get; set; }
         public Customer ? Customer { get; set; }
@@ -16,19 +16,27 @@ namespace Model
 
         public List<OrderItem> ? OrderItems { get; set; }
 
+        public Order()
+        {
+            OrderDate = DateTime.Now;
+            OrderItems = new List<OrderItem>();
+        }
+
+        public Order(int orderId) : this()
+        {
+            this.Id = orderId;
+            this.ShippingAddress = $"Endereço{orderId}";
+        }
+
         public bool Validate()
         {
-            return true;
-        }
+            bool isValid = true;
 
-        public Order Retrieve()
-        {
-            return new Order();
-        }
-
-        public void Save(Order order)
-        {
-
+            isValid =
+                (Customer != null) &&
+                (this.Id > 0) &&
+                !string.IsNullOrEmpty(this.ShippingAddress);
+            return isValid;
         }
 
     }

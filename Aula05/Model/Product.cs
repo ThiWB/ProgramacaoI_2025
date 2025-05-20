@@ -6,26 +6,23 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Product
+    public class Product
     {
         public int Id { get; set; }
         public string ? ProductName { get; set; }
         public string ? ProductDescription { get; set; }
-        public string ? CurrentPrice { get; set; }
+        public float ? CurrentPrice { get; set; }
 
         public bool Validate()
         {
-            return true;
-        }
+            bool isValid = true;
 
-        public Product Retrieve()
-        {
-            return new Product();
-        }
+            isValid = 
+                !string.IsNullOrEmpty(this.ProductName) &&
+                (this.Id > 0) && 
+                (this.CurrentPrice > 0);
 
-        public void Save(Product product)
-        {
-
+            return isValid;
         }
     }
 }
