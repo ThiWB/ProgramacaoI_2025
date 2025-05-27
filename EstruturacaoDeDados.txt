@@ -1,0 +1,9 @@
+Estruturação de Dados
+
+Primeira: Estrutura Delimitada
+* Separação por ponto e vírgula como arquivos .txt e .csv
+* Serve para serem importados em outros arquivos
+
+Segunda: Tamanho Fixo
+* Segue um padrão, algo que não muda
+* Código de barras

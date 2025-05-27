@@ -9,6 +9,8 @@ namespace Repository
 {
     public class Product
     {
+        public int Id { get; internal set; }
+
         public Product Retrieve()
         {
             return new Product();
