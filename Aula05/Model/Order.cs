@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +8,13 @@ namespace Model
 {
     public class Order
     {
+        #region Atributos
         public int Id { get; set; }
-        public Customer ? Customer { get; set; }
-        public DateTime ? OrderDate { get; set; }
-        public string ? ShippingAddress { get; set; }
-
-        public List<OrderItem> ? OrderItems { get; set; }
+        public Customer? Customer { get; set; }
+        public DateTime OrderDate { get; set; }
+        public Address? ShippingAddress { get; set; }
+        public List<OrderItem>? OrderItems { get; set; }
+        #endregion
 
         public Order()
         {
@@ -25,19 +25,34 @@ namespace Model
         public Order(int orderId) : this()
         {
             this.Id = orderId;
-            this.ShippingAddress = $"Endereço{orderId}";
+
         }
 
-        public bool Validate()
+        public Order(int orderId, Address address) : this(orderId)
         {
-            bool isValid = true;
-
-            isValid =
-                (Customer != null) &&
-                (this.Id > 0) &&
-                !string.IsNullOrEmpty(this.ShippingAddress);
-            return isValid;
+            this.ShippingAddress = address;
         }
 
+
+
+
+        public bool Validade()
+        {
+            return true;
+        }
+
+        public Order Retrieve(int orderId)
+        {
+            return new Order();
+        }
+
+        public List<Order> Retrieve()
+        {
+            return new List<Order>();
+        }
+
+        public void Save(Order order)
+        {
+        }
     }
 }

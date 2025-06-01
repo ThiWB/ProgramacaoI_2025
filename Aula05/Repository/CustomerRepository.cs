@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
+﻿using Model;
 
 namespace Repository
 {
@@ -11,28 +6,20 @@ namespace Repository
     {
         public Customer Retrieve(int id)
         {
-            foreach(Customer c in CustomerData.Customers)
-            {
-                if(c.Id == id)
-                {
+            foreach (Customer c in CustomerData.Customers)
+                if (c.Id == id)
                     return c;
-                }
-            }
 
-            return null;
+            return null!;
         }
 
-        public  List<Customer> RetrieveByName(string name)
+        public List<Customer> RetrieveByName(string name)
         {
             List<Customer> ret = new List<Customer>();
 
-            foreach(Customer c in CustomerData.Customers)
-            {
-                if(c.Name!.ToLower().Contains(name.ToLower()))
-                {
+            foreach (Customer c in CustomerData.Customers)
+                if (c.Name!.ToLower().Contains(name.ToLower()))
                     ret.Add(c);
-                }
-            }
 
             return ret;
         }
@@ -53,10 +40,14 @@ namespace Repository
             return CustomerData.Customers.Remove(customer);
         }
 
-        public void DeleteById(int id)
+        public bool DeleteById(int id)
         {
-            Delete(Retrieve(id));
+            Customer customer = Retrieve(id);
 
+            if (customer != null)
+                return Delete(customer);
+
+            return false;
         }
 
         public void Update(Customer newCustomer)
@@ -71,7 +62,5 @@ namespace Repository
         {
             return CustomerData.Customers.Count;
         }
-
-
     }
 }

@@ -16,15 +16,20 @@ namespace Aula05.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Customer> customers = _customerRepository.RetrieveAll();
-            return View();
+            List<Customer> customers =
+                _customerRepository.RetrieveAll();
+
+            return View(customers);
         }
 
         [HttpPost]
         public IActionResult Create(Customer c)
         {
             _customerRepository.Save(c);
-            List<Customer> customers = _customerRepository.RetrieveAll();
+
+            List<Customer> customers =
+                _customerRepository.RetrieveAll();
+
             return View("Index", customers);
         }
 
