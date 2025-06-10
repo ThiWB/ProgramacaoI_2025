@@ -1,0 +1,10 @@
+5Customer 15VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa1;Customer 1;1;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 25VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa2;Customer 2;2;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 35VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa3;Customer 3;3;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 45VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa4;Customer 4;4;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 55VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa5;Customer 5;5;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 65VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa6;Customer 6;6;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 75VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa7;Customer 7;7;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 85VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa8;Customer 8;8;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 95VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa9;Customer 9;9;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
+5Customer 105VideiraSCHU3HU3BRRua da minha casaSua casa89560-000Casa10;Customer 10;10;Videira;SC;HU3HU3BR;Rua da minha casa;Sua casa;89560-000;Casa
