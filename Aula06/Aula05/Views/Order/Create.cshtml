@@ -1,0 +1,30 @@
+﻿@model Aula05.ViewModels.OrderViewModel
+
+<div class="text-center">
+    <h1>Cadastro de Pedido</h1>
+
+    <div class="container">
+
+        <form id="formOrder" method="post"
+              asp-action="Create"
+              asp-controller="Order">
+
+            <div class="row">
+                <div class="form-group">
+                    <label asp-for="CustomerId">Cliente:</label>
+                    <select asp-for="CustomerId" asp-items="@(new SelectList(Model.Customers, "Id", "Name"))" class="form-control">
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="btnOrder"
+                    type="submit"
+                    class="btn btn-primary">
+                Cadastrar
+            </button>
+
+        </form>
+
+    </div>
+</div>
