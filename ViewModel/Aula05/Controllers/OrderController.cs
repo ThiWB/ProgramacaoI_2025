@@ -1,5 +1,4 @@
-﻿
-using Aula05.ViewModels;
+﻿using Aula05.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Modelo;
@@ -26,26 +25,6 @@ namespace Aula05.Controllers
             _orderRepository = orderRepository;
         }
 
-        private void PopulateViewModelDropdowns(OrderPlacementViewModel viewModel)
-        {
-            var currentSelectedCustomerId = viewModel.SelectedCustomerId;
-
-            viewModel.Customers = _customerRepository.GetAllCustomers()
-                                                     .Select(c => new SelectListItem
-                                                     {
-                                                         Value = c.Id.ToString(),
-                                                         Text = c.Name,
-                                                         Selected = c.Id == currentSelectedCustomerId
-                                                     }).ToList();
-
-            viewModel.AvailableProducts = _productRepository.GetAllProducts()
-                                                            .Select(p => new SelectListItem
-                                                            {
-                                                                Value = p.Id.ToString(),
-                                                                Text = $"{p.Name} (R$ {p.CurrentPrice:F2})"
-                                                            }).ToList();
-        }
-
         public IActionResult PlaceOrder()
         {
             var viewModel = new OrderPlacementViewModel
@@ -53,7 +32,10 @@ namespace Aula05.Controllers
                 OrderItems = new List<OrderItemViewModel>(),
                 ShippingAddress = string.Empty
             };
-            PopulateViewModelDropdowns(viewModel);
+
+            PopulateDropdowns(viewModel);
+            SetCustomerName(viewModel);
+
             return View(viewModel);
         }
 
@@ -61,78 +43,26 @@ namespace Aula05.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult PlaceOrder(OrderPlacementViewModel viewModel, string action)
         {
-            PopulateViewModelDropdowns(viewModel);
+            // Garante que a lista de itens não seja nula
+            viewModel.OrderItems ??= new List<OrderItemViewModel>();
 
-            if (action == "AddItem")
+            switch (action)
             {
-                if (viewModel.SelectedProductIdToAdd.HasValue && viewModel.SelectedProductIdToAdd.Value > 0)
-                {
-                    var productToAdd = _productRepository.GetProductById(viewModel.SelectedProductIdToAdd.Value);
-                    if (productToAdd != null)
-                    {
-                        var existingItem = viewModel.OrderItems.FirstOrDefault(oi => oi.ProductId == productToAdd.Id);
-                        if (existingItem != null)
-                        {
-                            existingItem.Quantity++;
-                        }
-                        else
-                        {
-                            viewModel.OrderItems.Add(new OrderItemViewModel
-                            {
-                                ProductId = productToAdd.Id,
-                                ProductName = productToAdd.Name,
-                                Price = productToAdd.CurrentPrice,
-                                Quantity = 1
-                            });
-                        }
-                    }
-                    viewModel.SelectedProductIdToAdd = null;
-                }
-            }
-            else if (action.StartsWith("RemoveItem_"))
-            {
-                if (int.TryParse(action.Replace("RemoveItem_", ""), out int itemIndexToRemove))
-                {
-                    if (itemIndexToRemove >= 0 && itemIndexToRemove < viewModel.OrderItems.Count)
-                    {
-                        viewModel.OrderItems.RemoveAt(itemIndexToRemove);
-                    }
-                }
+                case "AddItem":
+                    HandleAddItem(viewModel);
+                    break;
+
+                case string a when a.StartsWith("RemoveItem_"):
+                    HandleRemoveItem(viewModel, a);
+                    break;
+
+                case "SaveOrder":
+                    return HandleSaveOrder(viewModel);
             }
 
-            viewModel.TotalOrderValue = viewModel.OrderItems.Sum(item => item.Quantity * item.Price);
-
-            if (action == "SaveOrder")
-            {
-                if (!viewModel.OrderItems.Any())
-                {
-                    ModelState.AddModelError("", "O pedido deve conter pelo menos um item.");
-                    PopulateViewModelDropdowns(viewModel);
-                    return View(viewModel);
-                }
-
-                if (ModelState.IsValid)
-                {
-                    var order = new Order
-                    {
-                        CustomerId = viewModel.SelectedCustomerId,
-                        OrderDate = DateTime.Now,
-                        TotalAmount = viewModel.TotalOrderValue,
-                        ShippingAddress = viewModel.ShippingAddress,
-                        OrderItems = viewModel.OrderItems.Select(itemVm => new OrderItem
-                        {
-                            ProductId = itemVm.ProductId,
-                            Quantity = itemVm.Quantity,
-                            UnitPrice = itemVm.Price
-                        }).ToList()
-                    };
-
-                    _orderRepository.AddOrder(order);
-
-                    TempData["SuccessMessage"] = "Pedido realizado com sucesso!";
-                    return RedirectToAction("OrderConfirmation", new { id = order.Id });
-                }
-            }
+            viewModel.TotalOrderValue = viewModel.OrderItems.Sum(i => i.Quantity * i.Price);
+            PopulateDropdowns(viewModel);
+            SetCustomerName(viewModel);
 
             return View(viewModel);
         }
@@ -141,16 +71,130 @@ namespace Aula05.Controllers
         {
             var order = _orderRepository.GetOrderById(id);
             if (order == null)
-            {
                 return NotFound();
-            }
+
             order.Customer = _customerRepository.GetCustomerById(order.CustomerId);
+
             foreach (var item in order.OrderItems)
             {
                 item.Product = _productRepository.GetProductById(item.ProductId);
             }
 
             return View(order);
+        }
+
+        // Popula os dropdowns de clientes e produtos
+        private void PopulateDropdowns(OrderPlacementViewModel viewModel)
+        {
+            viewModel.Customers = _customerRepository.GetAllCustomers()
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name,
+                    Selected = (c.Id == viewModel.SelectedCustomerId)
+                })
+                .ToList();
+
+            viewModel.AvailableProducts = _productRepository.GetAllProducts()
+                .Select(p => new SelectListItem
+                {
+                    Value = p.Id.ToString(),
+                    Text = $"{p.Name} (R$ {p.CurrentPrice:F2})"
+                })
+                .ToList();
+        }
+
+        // Preenche o nome do cliente selecionado
+        private void SetCustomerName(OrderPlacementViewModel viewModel)
+        {
+            if (viewModel.SelectedCustomerId > 0)
+            {
+                var customer = _customerRepository.GetCustomerById(viewModel.SelectedCustomerId);
+                viewModel.CustomerName = customer?.Name ?? string.Empty;
+            }
+            else
+            {
+                viewModel.CustomerName = string.Empty;
+            }
+        }
+
+        // Adiciona item ao pedido
+        private void HandleAddItem(OrderPlacementViewModel viewModel)
+        {
+            if (!viewModel.SelectedProductIdToAdd.HasValue)
+                return;
+
+            var product = _productRepository.GetProductById(viewModel.SelectedProductIdToAdd.Value);
+            if (product == null)
+                return;
+
+            var existing = viewModel.OrderItems.FirstOrDefault(i => i.ProductId == product.Id);
+            if (existing != null)
+            {
+                existing.Quantity++;
+            }
+            else
+            {
+                viewModel.OrderItems.Add(new OrderItemViewModel
+                {
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    Price = product.CurrentPrice,
+                    Quantity = 1
+                });
+            }
+
+            viewModel.SelectedProductIdToAdd = null;
+        }
+
+        // Remove item do pedido
+        private void HandleRemoveItem(OrderPlacementViewModel viewModel, string action)
+        {
+            if (int.TryParse(action.Replace("RemoveItem_", ""), out int index))
+            {
+                if (index >= 0 && index < viewModel.OrderItems.Count)
+                {
+                    viewModel.OrderItems.RemoveAt(index);
+                }
+            }
+        }
+
+        // Salva o pedido no banco de dados
+        private IActionResult HandleSaveOrder(OrderPlacementViewModel viewModel)
+        {
+            if (!viewModel.OrderItems.Any())
+            {
+                ModelState.AddModelError("", "O pedido não pode estar vazio.");
+                PopulateDropdowns(viewModel);
+                SetCustomerName(viewModel);
+                return View(viewModel);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                PopulateDropdowns(viewModel);
+                SetCustomerName(viewModel);
+                return View(viewModel);
+            }
+
+            var order = new Order
+            {
+                CustomerId = viewModel.SelectedCustomerId,
+                OrderDate = DateTime.Now,
+                ShippingAddress = viewModel.ShippingAddress,
+                TotalAmount = viewModel.OrderItems.Sum(i => i.Quantity * i.Price),
+                OrderItems = viewModel.OrderItems.Select(i => new OrderItem
+                {
+                    ProductId = i.ProductId,
+                    Quantity = i.Quantity,
+                    UnitPrice = i.Price
+                }).ToList()
+            };
+
+            _orderRepository.AddOrder(order);
+            TempData["SuccessMessage"] = "Pedido realizado com sucesso!";
+
+            return RedirectToAction("OrderConfirmation", new { id = order.Id });
         }
     }
 }

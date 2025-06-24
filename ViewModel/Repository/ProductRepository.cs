@@ -42,6 +42,7 @@ namespace Repository
             {
                 CustomerData.Products.Remove(productToRemove);
             }
+
         }
     }
 }

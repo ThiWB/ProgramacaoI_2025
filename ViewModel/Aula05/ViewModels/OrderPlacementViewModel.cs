@@ -22,5 +22,7 @@ namespace Aula05.ViewModels
         public decimal TotalOrderValue { get; set; }
 
         public string ShippingAddress { get; set; }
+
+        public string CustomerName { get; set; }
     }
 }
