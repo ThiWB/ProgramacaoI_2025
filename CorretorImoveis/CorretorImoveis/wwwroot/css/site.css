@@ -30,13 +30,91 @@ body {
   text-align: start;
 }
 
-.buttons{
-    text-align: center;
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button {
-    border-radius: 25px;
-    border: transparent;
-    background: linear-gradient(to right, #8B0000, #FF0000);
-    color: white;
+body {
+    background-color: #0a0a0a; 
+    color: #e0e0e0; 
+    line-height: 1.6;
+}
+
+.home-page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.text-center-home {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.display-4 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #00ffc8; 
+    text-shadow: 0 0 10px #00ffc8;
+}
+
+.main-text {
+    background-color: #1a1a1a; 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 255, 200, 0.1);
+}
+
+.about-project h2 {
+    color: #00ffc8;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.about-project p {
+    color: #cfcfcf;
+    margin-bottom: 10px;
+}
+
+.home-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.home-button {
+    background-color: #111;
+    border: 2px solid #00ffc8;
+    color: #00ffc8;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #00ffc8;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px #00ffc8;
+}
+
+@media (max-width: 600px) {
+    .home-button {
+        width: 100%;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .display-4 {
+        font-size: 2.2rem;
+    }
 }
