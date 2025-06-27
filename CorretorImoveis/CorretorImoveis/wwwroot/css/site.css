@@ -37,71 +37,90 @@ body, h1, h2, p, button {
 }
 
 body {
-    background-color: #0a0a0a; 
-    color: #e0e0e0; 
-    line-height: 1.6;
+    position: relative;
+    background: url('/Videos/homeVideo.gif') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+    
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 0;
+}
+
+.home-page, .text-center-home, .main-text {
+    position: relative;
+    z-index: 1;
 }
 
 .home-page {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+    z-index: 1;
+    text-align: left;
+    max-width: 750px;
+    padding-top: 30px;
+    margin-left: -200px; 
+    margin-right: auto; 
 }
 
 .text-center-home {
-    text-align: center;
     margin-bottom: 40px;
+    z-index: 2;
 }
 
 .display-4 {
-    font-size: 3rem;
+    text-shadow: 8px 8px 4px rgba(0, 0, 0, 1.0);
+    text-transform: uppercase;
+    font-size: 5.1rem;
     font-weight: bold;
-    color: #00ffc8; 
-    text-shadow: 0 0 10px #00ffc8;
-}
-
-.main-text {
-    background-color: #1a1a1a; 
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 255, 200, 0.1);
+    color: white;
 }
 
 .about-project h2 {
-    color: #00ffc8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.0);
+    color: white;
     margin-top: 20px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #333;
     padding-bottom: 5px;
 }
 
 .about-project p {
-    color: #cfcfcf;
-    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.0);
+    color: white;
+    text-align: justify;
+    font-size: 18px;
 }
 
 .home-buttons {
     margin-top: 30px;
     display: flex;
     gap: 20px;
-    justify-content: center;
 }
 
 .home-button {
     background-color: #111;
-    border: 2px solid #00ffc8;
-    color: #00ffc8;
-    padding: 12px 30px;
-    font-size: 1rem;
+    border: 2px solid #6f0404;
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: uppercase;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .home-button:hover {
-    background-color: #00ffc8;
-    color: #0a0a0a;
-    box-shadow: 0 0 15px #00ffc8;
+    background-color: #6f0404;
+    color: white;
+    box-shadow: 0 0 15px #6f0404;
 }
 
 @media (max-width: 600px) {
@@ -118,3 +137,16 @@ body {
         font-size: 2.2rem;
     }
 }
+
+@media (max-width: 600px) {
+    .home-page {
+        margin-left: 10px;
+        margin-right: 10px; 
+        max-width: 100%;
+    }
+}
+
+
+
+
+
