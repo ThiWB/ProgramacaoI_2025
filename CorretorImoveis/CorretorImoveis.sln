@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.14.36212.18 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorretorImoveis", "CorretorImoveis\CorretorImoveis.csproj", "{370EE6D2-FC3A-41B2-A560-4C1BDF0098AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorretorImoveis", "CorretorImoveis\CorretorImoveis.csproj", "{2F97B1CC-5666-4762-B3B0-0F5FD7524E70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{370EE6D2-FC3A-41B2-A560-4C1BDF0098AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{370EE6D2-FC3A-41B2-A560-4C1BDF0098AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{370EE6D2-FC3A-41B2-A560-4C1BDF0098AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{370EE6D2-FC3A-41B2-A560-4C1BDF0098AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F97B1CC-5666-4762-B3B0-0F5FD7524E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F97B1CC-5666-4762-B3B0-0F5FD7524E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F97B1CC-5666-4762-B3B0-0F5FD7524E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F97B1CC-5666-4762-B3B0-0F5FD7524E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {150C6B4D-FC5A-4070-94D0-D58C7A19DA42}
 	EndGlobalSection
 EndGlobal

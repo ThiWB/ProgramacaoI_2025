@@ -1,0 +1,58 @@
+﻿@model List<CorretorImoveis.Models.Imovel>
+@{
+    ViewData["Title"] = "Imóveis Disponíveis - Imóveis dos Guri";
+}
+
+<!-- Fundo com gradiente escuro/azul -->
+<section class="min-h-screen bg-gradient-to-b from-gray-900 to-black py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-white mb-4">Imóveis <span class="text-blue-400">disponíveis</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Escolha entre os melhores imóveis selecionados com carinho pela nossa equipe.</p>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <a asp-controller="Imovel" asp-action="Create"
+               class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                <i class="fas fa-plus mr-2"></i> Novo Imóvel
+            </a>
+
+            <a asp-controller="Imovel" asp-action="ExportarTXT"
+               class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                <i class="fas fa-file-export mr-2"></i> Exportar para TXT
+            </a>
+        </div>
+
+        <!-- Tabela estilizada -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-800 text-white rounded-xl overflow-hidden shadow-lg">
+                <thead class="bg-gray-700 text-blue-400 uppercase text-sm tracking-wider">
+                    <tr>
+                        <th class="px-6 py-4 text-left">Nome</th>
+                        <th class="px-6 py-4 text-left">Descrição</th>
+                        <th class="px-6 py-4 text-left">Endereço</th>
+                        <th class="px-6 py-4 text-left">Quartos</th>
+                        <th class="px-6 py-4 text-left">Vagas</th>
+                        <th class="px-6 py-4 text-left">Banheiros</th>
+                        <th class="px-6 py-4 text-left">Categoria</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    @foreach (var item in Model)
+                    {
+                        <tr class="hover:bg-gray-700 transition duration-200">
+                            <td class="px-6 py-4">@item.Nome</td>
+                            <td class="px-6 py-4">@item.Descricao</td>
+                            <td class="px-6 py-4">@item.Endereco</td>
+                            <td class="px-6 py-4">@item.Quartos</td>
+                            <td class="px-6 py-4">@item.VagasGaragem</td>
+                            <td class="px-6 py-4">@item.Banheiros</td>
+                            <td class="px-6 py-4">@item.CategoriaNome</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

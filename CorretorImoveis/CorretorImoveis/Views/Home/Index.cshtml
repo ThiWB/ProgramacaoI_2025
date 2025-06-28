@@ -1,54 +1,77 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Imóveis dos Guri - Seu Lar dos Sonhos";
 }
 
-<div class="home-page">
-    <div class="text-center-home">
-        <h1 class="display-4">Imóveis dos Guri</h1>
+<section class="relative">
+    <!-- Fundo com GIF -->
+    <div class="gif-container h-screen w-full z-0">
+        <img src="./Videos/homeVideo.gif" alt="Interiores de imóveis" class="w-full h-full object-cover">
     </div>
 
-    <div class="main-text">
-        <div class="about-project">
-            <h2>Sobre o Projeto</h2>
-            <p>
-                Esse projeto Web ASP.NET MVC é o trabalho final proposto na matéria de Programação I,
-                da Terceira Fase de Ciência da Computação da Unoesc Videira. O seu intuito é um sistema
-                que armazene Imóveis a venda, permitindo o armazenamento e exportação de seus Dados.
-            </p>
-            <br />
-            <h2>Proposta e Requisitos do Projeto</h2>
-            <p>
-                Um corretor de imóveis deseja criar um sistema capaz de armazenar os seus itens à venda e para locação.
-                Para isto é necessário o registro dos IMÓVEIS e suas CATEGORIAS (Apartamento, Casa, Sítio e Sala Comercial).
-                Onde uma CATEGORIA pode ter 1 ou mais IMÓVEIS. Para os imóveis é desejado armazenar dados dos seguintes atributos:
-                Nro de Quartos, Nro de Vagas de Garagem, Nro de Banheiros, Endereço, Nome, Descrição e CATEGORIA.
-                <br />
-                <br />
-                Ao armazenar os dados dos IMÓVEIS em uma Lista e exibir em uma View tabulada,
-                permita que o Corretor de Imóveis exporte os dados em um arquivo .txt delimitado.
-                <br />
-                <br />
-                O projeto deve ser disponibilizado via GitHub;
-                <br />
-                Pode ser desenvolvido em equipes com até 4 integrantes
-            </p>
-
-            <div class="home-buttons">
-                <button class="home-button">Imóveis</button>
-                <button class="home-button">Sobre</button>
+    <!-- Camada superior com conteúdo -->
+    <div class="absolute inset-0 hero-gradient flex items-center min-h-screen opacity-90 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 flex items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                    Encontre seu <span class="text-blue-400">lar dos sonhos</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">
+                    A Imóveis dos Guri transforma sonhos em realidade. Descubra propriedades exclusivas com o melhor atendimento do mercado.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a asp-controller="Imovel" asp-action="Index"
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium text-lg transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search mr-2"></i> Explorar Imóveis
+                    </a>
+                </div>
             </div>
         </div>
-
     </div>
 
+    <!-- Ícone para rolar a página -->
+    <div class="absolute bottom-10 left-0 right-0 flex justify-center z-20">
+        <a href="#destaques" class="scroll-down text-blue-400 text-4xl animate-bounce">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</section>
 
-</div>
+<!-- Seção de Destaques -->
+<section id="destaques" class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">
+                Por que escolher a <span class="text-blue-400">Imóveis dos Guri</span>?
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Nossa missão é proporcionar a melhor experiência na compra, venda ou aluguel de imóveis, com transparência e excelência.
+            </p>
+        </div>
 
-<br />
-<br />
-<br />
-<br />
-<br />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-800 p-8 rounded-xl hover:blue-glow transition duration-300">
+                <div class="text-blue-400 text-4xl mb-4">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3">Variedade de Imóveis</h3>
+                <p class="text-gray-400">Desde apartamentos compactos até mansões luxuosas, temos opções para todos os perfis e necessidades.</p>
+            </div>
 
+            <div class="bg-gray-800 p-8 rounded-xl hover:blue-glow transition duration-300">
+                <div class="text-blue-400 text-4xl mb-4">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3">Localizações Privilegiadas</h3>
+                <p class="text-gray-400">Nossos imóveis estão situados nos melhores bairros, com fácil acesso a comércio, transporte e lazer.</p>
+            </div>
 
-
+            <div class="bg-gray-800 p-8 rounded-xl hover:blue-glow transition duration-300">
+                <div class="text-blue-400 text-4xl mb-4">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3">Condições Especiais</h3>
+                <p class="text-gray-400">Financiamento facilitado, parcelamento personalizado e negociação direta com proprietários.</p>
+            </div>
+        </div>
+    </div>
+</section>

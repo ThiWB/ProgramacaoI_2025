@@ -1,32 +1,30 @@
-using System.Diagnostics;
-using CorretorImoveis.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CorretorImoveis.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    public IActionResult Index()
     {
-        private readonly ILogger<HomeController> _logger;
+        return View();
+    }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+    // Example actions for your navigation links
+    public IActionResult Imoveis()
+    {
+        return View(); // Create Imoveis.cshtml
+    }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+    public IActionResult Servicos()
+    {
+        return View(); // Create Servicos.cshtml
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+    public IActionResult SobreNos()
+    {
+        return View(); // Create SobreNos.cshtml
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public IActionResult Contato()
+    {
+        return View(); // Create Contato.cshtml
     }
 }
