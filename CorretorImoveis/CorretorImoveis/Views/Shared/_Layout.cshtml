@@ -51,14 +51,13 @@
             animation: bounce 2s infinite;
         }
 
-        /* Corrected keyframes for bounce animation */
         @@keyframes bounce {
             0%, 100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-20px); /* Adjust bounce height as needed */
+                transform: translateY(-20px); 
             }
         }
 
@@ -77,11 +76,9 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="@Url.Action("Index", "Home")" class="nav-link text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Início</a>
+                            <a href="@Url.Action("Index", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Início</a>
                             <a href="@Url.Action("Index", "Imovel")" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Imóveis</a>
-                            <a href="@Url.Action("", "")" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Serviços</a>
                             <a href="@Url.Action("SobreNos", "Home")" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Sobre Nós</a>
-                            <a href="@Url.Action("", "")" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Contato</a>
                         </div>
                     </div>
                 </div>
@@ -102,11 +99,9 @@
 
         <div class="hidden md:hidden bg-gray-800" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="@Url.Action("Index", "Home")" class="nav-link text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Início</a>
-                <a href="@Url.Action("Imoveis", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Imóveis</a>
-                <a href="@Url.Action("Servicos", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+                <a href="@Url.Action("Index", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Início</a>
+                <a href="@Url.Action("Index", "Imovel")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Imóveis</a>
                 <a href="@Url.Action("SobreNos", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Sobre Nós</a>
-                <a href="@Url.Action("Contato", "Home")" class="nav-link text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Contato</a>
                 <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium mt-2 transition duration-300">
                     <i class="fas fa-phone-alt mr-2"></i> Fale Conosco
                 </button>
@@ -119,7 +114,6 @@
     </main>
 
     <script>
-        // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             var mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu.classList.contains('hidden')) {

@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using CorretorImoveis.Data;
 using CorretorImoveis.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CorretorImoveis.Models;
+﻿using CorretorImoveis.Models;
 
 namespace CorretorImoveis.Data
 {

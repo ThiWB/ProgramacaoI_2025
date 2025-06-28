@@ -13,50 +13,50 @@
         {
             <div class="grid grid-cols-1 gap-6">
 
-                <div>
-                    @Html.LabelFor(m => m.Nome, new { @class = "block text-white font-medium mb-1" })
-                    @Html.TextBoxFor(m => m.Nome, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
-                </div>
-
-                <div>
-                    @Html.LabelFor(m => m.Descricao, new { @class = "block text-white font-medium mb-1" })
-                    @Html.TextBoxFor(m => m.Descricao, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
-                </div>
-
-                <div>
-                    @Html.LabelFor(m => m.Endereco, new { @class = "block text-white font-medium mb-1" })
-                    @Html.TextBoxFor(m => m.Endereco, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                        @Html.LabelFor(m => m.Quartos, new { @class = "block text-white font-medium mb-1" })
-                        @Html.TextBoxFor(m => m.Quartos, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        @Html.LabelFor(m => m.Nome, new { @class = "block text-white font-medium mb-1" })
+                        @Html.TextBoxFor(m => m.Nome, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
                     </div>
 
                     <div>
-                        @Html.LabelFor(m => m.VagasGaragem, new { @class = "block text-white font-medium mb-1" })
-                        @Html.TextBoxFor(m => m.VagasGaragem, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        @Html.LabelFor(m => m.Descricao, new { @class = "block text-white font-medium mb-1" })
+                        @Html.TextBoxFor(m => m.Descricao, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
                     </div>
 
                     <div>
-                        @Html.LabelFor(m => m.Banheiros, new { @class = "block text-white font-medium mb-1" })
-                        @Html.TextBoxFor(m => m.Banheiros, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        @Html.LabelFor(m => m.Endereco, new { @class = "block text-white font-medium mb-1" })
+                        @Html.TextBoxFor(m => m.Endereco, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
                     </div>
-                </div>
 
-                <div>
-                    @Html.LabelFor(m => m.CategoriaId, "Categoria", new { @class = "block text-white font-medium mb-1" })
-                    @Html.DropDownListFor(m => m.CategoriaId, (SelectList)ViewBag.Categorias,
-                    "-- Selecione uma categoria --",
-                                new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            @Html.LabelFor(m => m.Quartos, new { @class = "block text-white font-medium mb-1" })
+                            @Html.TextBoxFor(m => m.Quartos, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.VagasGaragem, new { @class = "block text-white font-medium mb-1" })
+                            @Html.TextBoxFor(m => m.VagasGaragem, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.Banheiros, new { @class = "block text-white font-medium mb-1" })
+                            @Html.TextBoxFor(m => m.Banheiros, new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(m => m.CategoriaId, "Categoria", new { @class = "block text-white font-medium mb-1" })
+                        @Html.DropDownListFor(m => m.CategoriaId, (SelectList)ViewBag.Categorias,
+                        "-- Selecione uma categoria --",
+                                    new { @class = "w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" })
+                    </div>
+
+                <div class="text-center mt-6">
+                    <input type="submit" value="Salvar Imóvel"
+                           class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 cursor-pointer" />
+                </div>
             </div>
-
-            <div class="text-center mt-6">
-                <input type="submit" value="Salvar Imóvel"
-                       class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 cursor-pointer" />
-            </div>
-        </div>
-                }
+        }
     </div>
 </section>

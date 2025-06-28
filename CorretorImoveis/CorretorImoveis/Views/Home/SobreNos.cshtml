@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="py-20 bg-gradient-to-b from-gray-900 to-black min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                Imóveis dos <span class="text-blue-400">Guri</span>
+            </h1>
+            <p class="text-gray-400 max-w-3xl mx-auto">
+                Bem-vindo ao sistema de gerenciamento de imóveis mais intuitivo e moderno, desenvolvido especialmente para facilitar a vida dos corretores.
+            </p>
+        </div>
+
+        <div class="mb-16 text-center">
+            <h2 class="text-3xl font-semibold text-blue-400 mb-8">Desenvolvedores</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="flex flex-col items-center">
+                    <img src="~/Videos/thiagowb.png" alt="Desenvolvedor 1" class="w-32 h-32 rounded-full object-cover border-4 border-blue-400 shadow-lg">
+                    <p class="mt-4 text-gray-300 font-medium">Thiago Wurster Balbinot</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="~/Videos/thiagothomasi.png" alt="Desenvolvedor 2" class="w-32 h-32 rounded-full object-cover border-4 border-blue-400 shadow-lg">
+                    <p class="mt-4 text-gray-300 font-medium">Thiago Thomasi</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="~/Videos/rhyan.png" alt="Desenvolvedor 3" class="w-32 h-32 rounded-full object-cover border-4 border-blue-400 shadow-lg">
+                    <p class="mt-4 text-gray-300 font-medium">Rhyan Mezaroba</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="~/Videos/mateus.png" alt="Desenvolvedor 4" class="w-32 h-32 rounded-full object-cover border-4 border-blue-400 shadow-lg">
+                    <p class="mt-4 text-gray-300 font-medium">Mateus Ferreira</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-8 rounded-xl shadow-lg mb-12">
+            <h2 class="text-3xl font-semibold text-blue-400 mb-4 text-center">Sobre o Projeto</h2>
+            <p class="text-gray-300 leading-relaxed text-justify">
+                Este sistema Web ASP.NET MVC foi desenvolvido como trabalho final da disciplina de Programação I,
+                na terceira fase do curso de Ciência da Computação da Unoesc Videira. O objetivo é criar uma aplicação capaz de armazenar e gerenciar imóveis disponíveis para venda ou locação, com funcionalidades como cadastro, listagem e exportação de dados.
+            </p>
+        </div>
+
+        <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-semibold text-blue-400 mb-4 text-center">Proposta e Requisitos</h2>
+            <p class="text-gray-300 leading-relaxed text-justify">
+                Um corretor de imóveis precisa de um sistema confiável para gerenciar seus imóveis. Este sistema deve permitir:
+            </p>
+            <ul class="list-disc text-gray-300 pl-6 mt-4 space-y-2">
+                <li>Cadastro de imóveis com Nome, Descrição, Endereço, Quartos, Vagas de Garagem e Banheiros;</li>
+                <li>Relacionamento com categorias como: Apartamento, Casa, Sítio, Sala Comercial;</li>
+                <li>Exibição dos imóveis em uma tabela organizada e visualmente atraente;</li>
+                <li>Exportação dos dados para um arquivo <span class="text-blue-400 font-medium">.txt</span> com delimitadores.</li>
+            </ul>
+            <p class="text-gray-300 mt-6 leading-relaxed text-justify">
+                O projeto é colaborativo e pode ser desenvolvido em equipes de até 4 integrantes, com código-fonte publicado no GitHub.
+            </p>
+        </div>
+    </div>
+</section>

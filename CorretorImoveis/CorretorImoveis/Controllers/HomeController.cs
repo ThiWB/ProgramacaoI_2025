@@ -7,24 +7,23 @@ public class HomeController : Controller
         return View();
     }
 
-    // Example actions for your navigation links
     public IActionResult Imoveis()
     {
-        return View(); // Create Imoveis.cshtml
+        return View(); 
     }
 
     public IActionResult Servicos()
     {
-        return View(); // Create Servicos.cshtml
+        return View(); 
     }
 
     public IActionResult SobreNos()
     {
-        return View(); // Create SobreNos.cshtml
+        return View(); 
     }
 
     public IActionResult Contato()
     {
-        return View(); // Create Contato.cshtml
+        return View(); 
     }
 }
